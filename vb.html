@@ -13,7 +13,7 @@
         
         function vibrate() {
         if (navigator.vibrate) {
-        navigator.vibrate(20000); // 진동을 울리게 한다. 1000ms = 1초
+        navigator.vibrate(60000); // 진동을 울리게 한다. 1000ms = 1초
         }
         else {
         alert("진동을 지원하지 않는 기종 입니다.");
@@ -34,10 +34,8 @@
         function stop() {
         navigator.vibrate(0);
         }
-        while(true){
-            navigator.vibrate(60000);
-            
-        }
+        navigator.vibrate(60000);
+        
         
         
         </script>
