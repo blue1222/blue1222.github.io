@@ -22,11 +22,11 @@
       return results === null ? "" : decodeURIComponent(results[1].replace(/\+/g, " "));
     }
     var code = getParameterByName('code');
-    var id = getParameterByName('id');
+    var tempid = Number(getParameterByName('id'));
     Kakao.init(code);
     // // 카카오링크 버튼을 생성합니다. 처음 한번만 호출하면 됩니다.
     Kakao.Link.sendCustom({
-      templateId: id,
+      templateId: tempid,
       templateArgs: {
         'title': '',
         'description': ''
