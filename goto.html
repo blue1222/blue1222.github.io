@@ -14,7 +14,7 @@
             return results === null ? "" : decodeURIComponent(results[1].replace(/\+/g, " "));
         }
         var gotourl = getParameterByName('goto');
-        location.href = gotourl;
+        location.href = 'http://' + gotourl;
     </script>
 </body>
 </html>
