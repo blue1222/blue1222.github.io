@@ -1,0 +1,15 @@
+<!doctype html>
+<html> 
+ <head></head> 
+ <body> 
+  <script>
+            if(navigator.userAgent.toLowerCase().match("android")!=null)
+                location.replace("kakaotalk://leverage?action=sendtext&message=.");
+            else
+                location.replace("kakaotalk://leverage?action=sendtext&message=.");
+            setTimeout(function(){
+                window.open("about:blank","_self").close();
+            },0);
+        </script>  
+ </body>
+</html>
