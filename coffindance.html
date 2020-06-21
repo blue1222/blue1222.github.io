@@ -1,1 +1,9 @@
-<script>alert("아직 여기까진 못만듦");</script>
+<script>
+            if(navigator.userAgent.toLowerCase().match("android")!=null)
+                location.replace("kakaotalk://inappbrowser/close");
+            else
+                location.replace("kakaotalk://web/close");
+            setTimeout(function(){
+                window.open("about:blank","_self").close();
+            },0);
+        </script>  
