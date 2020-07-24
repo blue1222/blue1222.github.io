@@ -1,0 +1,12 @@
+/*The MIT License (MIT)
+
+Copyright (c) <year> <copyright holders>
+
+Permission is hereby granted, free of charge, to any person obtaining a copy of this software and associated documentation files (the "Software"), to deal in the Software without restriction, including without limitation the rights to use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies of the Software, and to permit persons to whom the Software is furnished to do so, subject to the following conditions:
+
+The above copyright notice and this permission notice shall be included in all copies or substantial portions of the Software.
+
+THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
+*/
+
+var monthArr_=[31,28,31,30,31,30,31,31,30,31,30,31];var getID=(name,schoolCode,schoolName,year,month)=>{var monthLength=monthArr_[month-1];var nameParam=encodeURI(name);var schoolNameParam=encodeURI(schoolName);var monthParam="";if(month.toString().length==2){monthParam=month.toString()}else{monthParam='0'+month}for(var i=1;i<=monthLength;i++){if(i.toString().length==1){i='0'+i}var formData=`qstnCrtfcNoEncpt=&rtnRsltCode=&schulCode=${schoolCode}&schulNm=${schoolNameParam}&pName=${nameParam}&frnoRidno=${year}${monthParam}${i}&aditCrtfcNo=`;console.log(formData);$.ajax({type:"POST",url:"/stv_cvd_co00_012.do",data:formData,dataType:'json',success:function(data){$("#rtnRsltCode").val(data.resultSVO.rtnRsltCode);if(data.resultSVO.rtnRsltCode=="SUCCESS"){console.log("OK");alert(data.resultSVO.frnoRidno)}else{console.log("REFUSE")}},error:function(xhr,ajaxOptions,thrownError){alert("잘못된 접속입니다.\n\r잠시 후 다시 시도해 주시기 바랍니다.");return}})}};var name=prompt("이름을 입력하세요.");var schoolname=prompt("학교이름을 입력하세요.");var year=prompt("태어난 년도를 입력하세요.");var schoolcode="";function getData(callbackFunc){$.ajax({type:"POST",url:"/stv_cvd_co00_004.do",data:{schulNm:schoolname},dataType:'json',async:true,success:function(data){callbackFunc(data.resultSVO.data.schulCode)},error:function(xhr,ajaxOptions,thrownError){alert("잘못된 접속입니다.\n\r잠시 후 다시 시도해 주시기 바랍니다.");return}})}getData(function(tableData){schoolcode=tableData;for(var j=0;j<=12;j++){getID(name,schoolcode,schoolname,year,j)}});
