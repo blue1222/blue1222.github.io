@@ -193,14 +193,14 @@ function sendLink() {
     var code = '212e76f05fd777381117ae006cef5d9b';
     var tempid = 37228;
     var item = 0;
-    if(document.getElementById('selection') == 'write'){
-        item = docuemnt.getElementById('emoji');
+    if(document.getElementById('selection').value == 'write'){
+        item = docuemnt.getElementById('emoji').value;
     } else {
-        item = document.getElementById('selection');
+        item = document.getElementById('selection').value;
     }
     item = Number(item);
-    var sender = document.getElementById('name');
-    var msg = document.getElementById('msg');
+    var sender = document.getElementById('name').value;
+    var msg = document.getElementById('msg').value;
     var link = `alert?msg=${msg}`
     Kakao.init(code);
     Kakao.Link.sendCustom({
