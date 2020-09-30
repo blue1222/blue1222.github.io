@@ -193,20 +193,20 @@ function sendLink() {
     var code = '212e76f05fd777381117ae006cef5d9b';
     var tempid = 37228;
     var item = 0;
-    if(document.getElementById('selection').value == 'write'){
-        item = docuemnt.getElementById('emoji').value;
+    if(document.getElementById('selection') == 'write'){
+        item = docuemnt.getElementById('emoji');
     } else {
-        item = document.getElementById('selection').value;
+        item = document.getElementById('selection');
     }
     item = Number(item);
-    var sender = document.getElementById('name').value;
-    var msg = document.getElementById('msg').value;
+    var sender = document.getElementById('name');
+    var msg = document.getElementById('msg');
     var link = `alert?msg=${msg}`
     Kakao.init(code);
     Kakao.Link.sendCustom({
         templateId: tempid,
         templateArgs: {
-        	'name': `${sender}님이 이모티콘을 선물하셨습니다.\n 이모티콘은 수신일로부터 30일까지만 다운로드가 가능합니다.`,
+        	'${title}': `${sender}님이 이모티콘을 선물하셨습니다.\n 이모티콘은 수신일로부터 30일까지만 다운로드가 가능합니다.`,
         	'${IMG}': `https://item.kakaocdn.net/dw/${item}.gift.jpg`,
             '${link}': `${link}`
         },
