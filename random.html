@@ -178,7 +178,7 @@ function sendLink() {
     Kakao.Link.sendCustom({
         templateId: tempid,
         templateArgs: {
-        	'name': `선착순 선물게임을 시작합니다! 기회는 단 10분간, 선착순 1명에게!`,
+        	'${title}': `선착순 선물게임을 시작합니다! 기회는 단 10분간, 선착순 1명에게!`,
         	'${IMG}': `https://gift-s.kakaocdn.net/dn/gift/images/message/img-fcfs-start.png`,
           '${link}': `${link}`
         },
