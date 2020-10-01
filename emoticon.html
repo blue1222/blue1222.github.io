@@ -48,7 +48,7 @@
 
     }
     input[id="msg"]{
-      width:100%;
+      width:70%;
       height:100%;
       border:none;
       font-size:1em;
@@ -174,14 +174,27 @@
 </div>
 <div class='block'></div>
 <div class="in-line">
-    <input id="msg" type="text" name="name" value="" placeholder="버튼 클릭시 띄울 메시지">
+    <input id="msg" type="text" name="name" value="" placeholder="버튼 클릭시 이동시킬 URL">
+    <select id="type" type="select" name="selection" id="selection" onChange='changeType()'>
+        <option value='url'>URL</option>
+        <option value='alert'>메시지창</option>
+    </select>
 </div>
 <div class='block'></div>
 <div class='in-line'>
     <input type="button" name="name" value="전송" onClick='sendLink()'>
 </div>
 <script type='text/javascript'>
-
+var isAlert = false;
+function changeType() {
+    if(document.getElementById('type').value == 'alert'){
+        isAlert = false;
+        document.getElementById('msg').placeholder = '버튼 클릭시 띄울 메시지'
+    } else if(document.getElementById('type').value == 'url'){
+        isAlert = true;
+        document.getElementById('msg').placeholder = '버튼 클릭시 이동시킬 URL'
+    }
+}
 
 function sendLink() {
     function getParameterByName(name) {
@@ -198,9 +211,16 @@ function sendLink() {
     } else {
         item = document.getElementById('selection');
     }
+    var msg = document.getElementById('msg');
+    var link = '';
+    if(isAlert){
+        var link = `alert?msg=${msg}`;
+    } else {
+        var link = `goto?goto=${msg}`;
+    }
     item = Number(item);
     var sender = document.getElementById('name');
-    var msg = document.getElementById('msg');
+    
     var link = `alert?msg=${msg}`
     Kakao.init(code);
     Kakao.Link.sendCustom({
