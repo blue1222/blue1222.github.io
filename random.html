@@ -163,10 +163,10 @@
 var isAlert = false;
 function changeType() {
     if(document.getElementById('type').value == 'alert'){
-        isAlert = false;
+        isAlert = true;
         document.getElementById('msg').placeholder = '버튼 클릭시 띄울 메시지'
     } else if(document.getElementById('type').value == 'url'){
-        isAlert = true;
+        isAlert = false;
         document.getElementById('msg').placeholder = '버튼 클릭시 이동시킬 URL'
     }
 }
