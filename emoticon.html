@@ -207,9 +207,9 @@ function sendLink() {
     var tempid = 37228;
     var item = 0;
     if(document.getElementById('selection') == 'write'){
-        item = docuemnt.getElementById('emoji');
+        item = docuemnt.getElementById('emoji').value;
     } else {
-        item = document.getElementById('selection');
+        item = document.getElementById('selection').value;
     }
     var msg = document.getElementById('msg').value;
     var link = '';
@@ -219,9 +219,7 @@ function sendLink() {
         var link = `goto?goto=${msg}`;
     }
     item = Number(item);
-    var sender = document.getElementById('name');
-    
-    var link = `alert?msg=${msg}`
+    var sender = document.getElementById('name').value;
     Kakao.init(code);
     Kakao.Link.sendCustom({
         templateId: tempid,
