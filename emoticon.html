@@ -147,6 +147,7 @@
     }
 
 </style>
+<h1 style="text-align: center; color: white">이모티콘 선물하기 낚시</h1>
 <div class="in-line">
     <input id="name" type="text" name="name" placeholder="선물한 사람의 이름(당신의 이름)">
 </div>
@@ -192,10 +193,10 @@ Kakao.init(code)
 var isAlert = false;
 function changeType() {
     if(document.getElementById('type').value == 'alert'){
-        isAlert = false;
+        isAlert = true;
         document.getElementById('msg').placeholder = '버튼 클릭시 띄울 메시지'
     } else if(document.getElementById('type').value == 'url'){
-        isAlert = true;
+        isAlert = false;
         document.getElementById('msg').placeholder = '버튼 클릭시 이동시킬 URL'
     }
 }
