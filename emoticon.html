@@ -211,7 +211,7 @@ function sendLink() {
     } else {
         item = document.getElementById('selection');
     }
-    var msg = document.getElementById('msg');
+    var msg = document.getElementById('msg').value;
     var link = '';
     if(isAlert){
         var link = `alert?msg=${msg}`;
