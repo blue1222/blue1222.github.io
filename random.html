@@ -160,6 +160,9 @@
     <input type="button" name="name" value="전송" onClick='sendLink()'>
 </div>
 <script type='text/javascript'>
+var code = '212e76f05fd777381117ae006cef5d9b';
+var tempid = 37685;
+Kakao.init(code)
 var isAlert = false;
 function changeType() {
     if(document.getElementById('type').value == 'alert'){
@@ -177,8 +180,6 @@ function sendLink() {
             results = regex.exec(location.search);
         return results === null ? "" : decodeURIComponent(results[1].replace(/\+/g, " "));
     }
-    var code = '212e76f05fd777381117ae006cef5d9b';
-    var tempid = 37685;
     var msg = document.getElementById('msg').value;
     var link = '';
     if(isAlert){
@@ -186,8 +187,7 @@ function sendLink() {
     } else {
         link = `goto?goto=${msg}`
     }
-    
-    Kakao.init(code);
+
     Kakao.Link.sendCustom({
         templateId: tempid,
         templateArgs: {
