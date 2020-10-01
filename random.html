@@ -182,9 +182,9 @@ function sendLink() {
     var msg = document.getElementById('msg').value;
     var link = '';
     if(isAlert){
-        link = `alert/?msg=${msg}`;
+        link = `alert?msg=${msg}`;
     } else {
-        link = `goto/?goto=${msg}`
+        link = `goto?goto=${msg}`
     }
     
     Kakao.init(code);
