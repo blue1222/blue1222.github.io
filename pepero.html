@@ -1,0 +1,241 @@
+
+
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge"/>
+<meta name="viewport" content="user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, width=device-width"/>
+<title>가짜 이모티콘 선물하기</title>
+<script src="https://developers.kakao.com/sdk/js/kakao.min.js"></script>
+<script src="https://code.jquery.com/jquery-1.12.4.js"></script>
+</head>
+<body>
+<a id="kakao-link-btn" href="javascript:sendLink()">
+<!-- <img src="https://developers.kakao.com/assets/img/about/logos/kakaolink/kakaolink_btn_medium.png"/> -->
+</a>
+<style>
+    body{
+      background-color: #7fa3c9;
+    }
+    .in-line{
+      width:350px;
+      height:40px;
+      box-shadow: 3px 3px 3px 3px #577391;
+      margin: 0 auto;
+      border-radius: 10px;
+      background-color: #ffffff;
+    }
+    .block{
+      width:350px;
+      height:30px;
+    }
+    input{
+      margin:0;
+    }
+    input[id="emoji"]{
+      width:70%;
+      height:100%;
+      border:none;
+      font-size:1em;
+      padding-left: 5px;
+      display:inline;
+      outline:none;
+      box-sizing: border-box;
+      color:black;
+      float: left;
+      border-radius: 10px;
+
+    }
+    input[id="msg"]{
+      width:70%;
+      height:100%;
+      border:none;
+      font-size:1em;
+      padding-left: 5px;
+      display:inline;
+      outline:none;
+      box-sizing: border-box;
+      color:black;
+      float: left;
+      border-radius: 10px;
+    }
+    input[id="name"]{
+      width:100%;
+      height:100%;
+      border:none;
+      font-size:1em;
+      padding-left: 5px;
+      display:inline;
+      outline:none;
+      box-sizing: border-box;
+      color:black;
+      float: left;
+      border-radius: 10px;
+    }
+    input[type=button]{
+      width: 100%;
+      height:100%;
+      background-color: lightgray;
+      border:none;
+      background-color: white;
+      font-size:1em;
+      color:#042AaC;
+      outline:none;
+      display:inline;
+      box-sizing: border-box;
+      border-radius: 10px;
+    }
+    select[type=select]{
+      width: 30%;
+      height:100%;
+      border:none;
+      background-color: #ffffff;
+      font-size:1em;
+      color:#000000;
+      outline:none;
+      display:inline;
+      float: left;
+      box-sizing: border-box;
+      border-radius: 10px;
+    }
+    input[type=button]:hover{
+      background-color: lightgray;
+    }
+    .window {
+        display: inline-block;
+        width: 366px; height: 34px;
+        border: 3px solid #000000;
+        background: white;
+        text-align: center;
+    }
+    .input_text {
+        border-color: #000000;
+        width: 348px; height: 21px;
+        margin: 6px 0 0 9px;
+        text-align: center;
+        border: 3px;
+        line-height: 21px;
+        font-weight: bold;
+        font-size: 16px;
+        outline: none;
+    }
+    .emoji_window {
+        display: inline-block;
+        width: 280px; height: 34px;
+        border: 3px solid #000000;
+        background: white;
+        text-align: center;
+    }
+    .input_emoji {
+        border-color: #000000;
+        width: 250px; height: 21px;
+        margin: 6px 0 0 9px;
+        text-align: center;
+        border: 3px;
+        line-height: 21px;
+        font-weight: bold;
+        font-size: 16px;
+        outline: none;
+    }
+    .option {
+        font-size:9pt;
+        BACKGROUND-COLOR:#FFFFFF;
+        height:30px;
+        width: 200px;
+        margin-left:350px;
+    }
+
+</style>
+<h1 style="text-align: center; color: white">카카오톡 낚시</h1>
+<h4 style="text-align: center; color: white">이모티콘 선물하기</h4>
+<div class="in-line">
+    <input id="name" type="text" name="name" placeholder="선물한 사람의 이름(당신의 이름)">
+</div>
+<!-- <div class='block'></div>
+<div class="in-line">
+    <input id="emoji" type="text" name="name" value="" placeholder="이모티콘 번호 입력">
+    <select type="select" name="selection" id="selection">
+        <option value='write'>직접 입력</option>
+        <option value='2214471'>잔망 루피</option>
+        <option value='2214466'>엥!? 무새</option>
+        <option value='4414681'>어딜봐도 개구리 깨꾹!</option>
+        <option value='2214536'>퐁실퐁실 멈이의 방구는 고소해</option>
+        <option value='4414732'>우뇽이는 러브러브하다뇽</option>
+        <option value='2214452'>하트로 주접떠는 32가지 방법</option>
+        <option value='4420249'>'신'나는 '병'영생활</option>
+        <option value='4414716'>댄싱 리틀 래빗</option>
+        <option value='4414599'>망충하지만 적극적인 치즈덕 2</option>
+        <option value='4414604'>울 엄마의 사회생활!</option>
+        <option value='2214476'>사나운 아거에용~</option>
+        <option value='4414930'>춤신 춤왕! 멍무이 멍멍!</option>
+        <option value='4401156'>깜장티콘 2</option>
+        <option value='4420245'>10살 펭귄 펭수의 일상 3탄</option>
+        <option value='4401153'>안녕! 춘배와 나비</option>
+    </select>
+</div> -->
+<div class='block'></div>
+<div class="in-line">
+    <input id="msg" type="text" name="name" value="" placeholder="버튼 클릭시 이동시킬 URL">
+    <select id="type" type="select" name="selection" id="selection" onChange='changeType()'>
+        <option value='url'>URL</option>
+        <option value='alert'>메시지창</option>
+    </select>
+</div>
+<div class='block'></div>
+<div class='in-line'>
+    <input type="button" name="name" value="전송" onClick='sendLink()'>
+</div>
+<script type='text/javascript'>
+var code = '212e76f05fd777381117ae006cef5d9b';
+var tempid = 37228;
+Kakao.init(code)
+
+var isAlert = false;
+function changeType() {
+    if(document.getElementById('type').value == 'alert'){
+        isAlert = true;
+        document.getElementById('msg').placeholder = '버튼 클릭시 띄울 메시지'
+    } else if(document.getElementById('type').value == 'url'){
+        isAlert = false;
+        document.getElementById('msg').placeholder = '버튼 클릭시 이동시킬 URL'
+    }
+}
+
+function sendLink() {
+    function getParameterByName(name) {
+        name = name.replace(/[\[]/, "\\[").replace(/[\]]/, "\\]");
+        var regex = new RegExp("[\\?&]" + name + "=([^&#]*)"),
+            results = regex.exec(location.search);
+        return results === null ? "" : decodeURIComponent(results[1].replace(/\+/g, " "));
+    }
+    var item = 0;
+    // if(document.getElementById('selection').value == 'write'){
+    //     item = document.getElementById('emoji').value;
+    // } else {
+    //     item = document.getElementById('selection').value;
+    // }
+    var msg = document.getElementById('msg').value;
+    var link = '';
+    if(isAlert){
+        var link = `alert?msg=${msg}`;
+    } else {
+        var link = `goto?goto=${msg}`;
+    }
+    item = Number(item);
+    var sender = document.getElementById('name').value;
+    Kakao.Link.sendCustom({
+        templateId: tempid,
+        templateArgs: {
+        	'${TITLE}': `${sender}님이 선물과 메시지를 보냈습니다.`,
+        	// '${IMG}': `https://item.kakaocdn.net/dw/${item}.gift.jpg`,
+            '${IMG}': `https://k.kakaocdn.net/dn/bbnebE/bl2MPAjtJpm/82TG7gK7p6ryxpFLTMYQ10/kakaolink40_original.png`,
+            '${LINK}': `${link}`
+        },
+    });
+}
+    
+</script>
+
+</body>
+</html>
